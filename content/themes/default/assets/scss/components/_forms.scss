@@ -1,0 +1,31 @@
+form {
+    margin: auto;
+
+    input, textarea {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 15px;
+
+        box-shadow: 0px 0px 1px $custom-primary-color;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+.feedback {
+    margin-bottom: 25px;
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+}

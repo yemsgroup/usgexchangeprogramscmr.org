@@ -1,0 +1,53 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<div class="col-lg-3 mb-5">
+    <div class="team text-center">
+    
+        <div class="image">
+            <?=isset($feature_data['image']) 
+                ? Run::post_image(
+                    $feature_data['image'], 
+                    ['alt' => (isset($feature_data['image_caption']) ? strip_tags($feature_data['image_caption']) : null)]
+                )
+                : ''; 
+            ?>
+        </div>
+        
+        <div class="text card-body shadow">
+            <?=isset($feature_data['first_name']) 
+                ? '<h5 class="h6 fw-bold">' . $feature_data['first_name'] 
+                    . (isset($feature_data['last_name']) ? ' ' . $feature_data['last_name'] : '')
+                    . '</h5>'
+                : '' 
+            ?>
+    
+            <?=isset($feature_data['description'])
+                ? '<p>' . strip_tags($feature_data['description']) . '</p>'
+                : (
+                    isset($feature_data['content']) 
+                        ? '<p>' . substr(strip_tags($feature_data['content']), 0, 100) . '...</p>' 
+                        : ''
+                )
+            ?>
+    
+            <!-- <?=isset($feature_data['link']) 
+                ? '<small><a href="' . BASE_URL . '/' . CURRENT_PAGE 
+                    . (
+                        isset($page_data['link']) 
+                            ? $page_data['link'] 
+                            : (
+                                isset($feature_page)
+                                    ? $feature_page
+                                    : ''
+                            )
+                    )
+                    . '/' . $feature_data['link']
+                    . '" class="">learn more &rarr;</a></small>' 
+                : '' 
+            ?>         -->
+        </div>
+        
+    </div>
+</div>

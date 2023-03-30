@@ -1,0 +1,30 @@
+// Every thing about header styles
+/* Website Header */
+header {
+
+	.logo {
+
+		img {
+			height: 50px;
+			transition: all 0.5s;
+		}
+	}
+
+	&.scrolled {
+		.logo {
+			img {
+				height: 30px;
+			}
+		}
+	}
+	
+}
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 992px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+}

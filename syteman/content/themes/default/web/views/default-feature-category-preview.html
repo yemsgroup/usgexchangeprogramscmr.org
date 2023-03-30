@@ -1,0 +1,24 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<span class="badge bg-secondary cursor fw-normal">
+    <a 
+        class="text-white"
+        href='<?=$page; ?>/c/<?=$feature_data['id'] ?>'
+    >    
+        <?=isset($feature_data['title']) 
+            ? $feature_data['title']
+            : '' 
+        ?>  
+    </a>
+    <a 
+        class="ps-2 ms-2 border-start border-light text-white" 
+        tabindex="0" role="button"
+        data-bs-toggle="popover" data-bs-html="true" data-bs-container="body" data-bs-trigger="focus"
+        title="
+            <a href='<?=$page; ?>/c/<?=$feature_data['id'] ?>/edit' class='mx-1 small'><i class='fas fa-pen-square'></i></a>
+            <a href='<?=$page; ?>/c/<?=$feature_data['id'] ?>/delete' class='mx-1 small'><i class='fas fa-trash'></i></a>
+        "
+    ><i class="fas fa-caret-right"></i></a>
+</span>

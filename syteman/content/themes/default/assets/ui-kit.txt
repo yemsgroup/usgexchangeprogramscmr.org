@@ -1,0 +1,9 @@
+base: 333333
+primary: 2581c4
+secondary: f6a317
+accent: FF0000
+accent 2: 00FF00
+
+Font: Almarai Regular
+Font (title): Lato
+Accent: Times New Roman

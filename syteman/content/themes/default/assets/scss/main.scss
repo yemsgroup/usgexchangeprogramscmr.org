@@ -1,0 +1,37 @@
+@use "sass:map";
+
+// Fonts and Types
+	@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+// Abstracts
+	@import "abstracts/_variables";
+	@import "abstracts/_mixins";
+	@import 'abstracts/_functions';
+
+// Base
+	@import "base/_site-defaults";
+	@import "base/_reusable";
+
+// Components
+	@import "components/_carousel";
+	@import "components/_cta";
+	@import "components/_forms";
+
+// Layout
+	@import "layout/_header";
+	@import "layout/_main";
+	@import "layout/_navbar";
+	@import "layout/_footer";
+
+// Pages
+	@import "pages/landing-page";
+
+// Features
+	@import "partials/_features";
+
+
+// NB 
+	// tablets break at Medium 
+	// @media screen and (min-width: 768px)
+	// Desktops break out at Large 
+	// @media screen and (min-width: 992px)

@@ -1,0 +1,44 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can <?php // var_dump($feature_data); ?> to see all what content is being returned. 
+-->
+
+<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                
+    <?php foreach($feature_data as $features): ?>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-item fade">
+
+            <div class="numbertext"><?=(array_search($features, $feature_data) + 1) . ' / ' . count($feature_data) ?></div>
+                
+            <img src="<?=PATH_TO_IMAGES . $features['image']; ?>" alt="<?=strip_tags($features['title']); ?>" class="">
+
+            <div class="carousel-caption fw-bold">
+                <?php 
+                    if(!empty($features['title'])) echo $features['title'];
+                    if(!empty($features['content'])) echo '<small>' . $features['content'] . '</small>';
+                ?>
+                    
+                <?php if($features['link']!=''): ?>
+                    <section>
+                        <a href="<?=BASE_URL . '/' . $features['link'] ?>" class="btn btn-custom-base px-4">Learn More</a>
+                    </section>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+    
+    <!-- Left and right controls -->
+    <button class="carousel-control-prev" type="button" onclick="plusSlides(-1)">&#10094;</button>
+    <button class="carousel-control-next" type="button" onclick="plusSlides(1)">&#10095;</button>
+                
+    <!-- The dots/circles -->
+    <div class="dots" style="text-align: center">
+        <?php foreach($feature_data as $features): ?>
+            <span class="dot" onclick="currentSlide(<?=(array_search($features, $feature_data) + 1) ?>)"></span>
+        <?php endforeach; ?>
+    </div>
+    
+</div>

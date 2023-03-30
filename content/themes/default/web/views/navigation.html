@@ -1,0 +1,23 @@
+<?php if (isset($links)): ?>
+<nav class="navigation" id="navigation">
+
+    <button class="icon" onclick="toggleNav()"><img src="<?=PATH_TO_IMAGES?>/menu-icon.svg" alt="" height="25"></button>
+
+    <ul class="">
+
+        <?php foreach ($links as $nav_links): ?>
+                
+            <li class="nav-item<?=($nav_links['link'] == $current_page) ? ' active' : '' ?>">
+                <a class="nav-link" href="<?=BASE_URL . '/' . $nav_links['link'] ?>"><?=
+                    isset($nav_links['title']) 
+                        ? $nav_links['title'] 
+                        : 'nav title' 
+                ?></a>
+            </li>
+            
+        <?php endforeach; ?>
+
+    </ul>
+
+</nav>
+<?php endif; ?>

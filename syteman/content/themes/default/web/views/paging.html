@@ -1,0 +1,31 @@
+<div class="d-block text-center">
+		
+	<?php
+
+		if ($current_page != 1) 
+			echo '<a href="' . Route::resolve_pagination_in_uri(($current_page - 1)) . '" class="btn"><i class="fas fa-caret-left"></i></a>';
+			
+		if ($number_of_pages > 10) 
+			echo '<a href="' . Route::resolve_pagination_in_uri(1) . '" class="btn btn-sm">First Page</a>';
+
+		for ($j = 1; $j <= $number_of_pages; $j++) {
+
+			echo '<a  class="btn'
+				. ($current_page != $j 
+					? ' btn-light shadow-sm" href="' . Route::resolve_pagination_in_uri($j) . '"' 
+					: ' pe-none"'
+				) . 
+			'>'
+				. $j . 
+			'</a>';
+
+		}
+
+		if ($number_of_pages > 10) 
+			echo '<a href="' . Route::resolve_pagination_in_uri($number_of_pages) . '" class="btn btn-sm">Last Page</a>';
+			
+		if ($current_page != $number_of_pages) 
+			echo '<a href="' . Route::resolve_pagination_in_uri(($current_page + 1)) . '" class="btn"><i class="fas fa-caret-right"></i></a>';
+
+	?>
+</div>

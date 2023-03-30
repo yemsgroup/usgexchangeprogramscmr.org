@@ -1,0 +1,72 @@
+// Every css code effecting the carousel
+.carousel {
+	width: 100%;
+	height: 60vh;
+
+	.carousel-item {
+
+		img {
+			height: 60vh;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.carousel-caption {
+			font-size: 20px;
+			line-height: normal;
+			text-shadow: 0px 0px 2px #000000;
+
+			bottom: 10%;
+
+			small {
+				display: block;
+				font-size: 18px;
+			}
+
+			.btn {
+				text-shadow: none;
+			}
+		}
+	}
+}
+
+// If you want to edit the default bootstrap arrows
+.carousel-control-next, .carousel-control-prev {
+	// top: 90% !important;
+	// bottom: 0%;
+	// width: auto !important;
+	// filter: invert(100%); 					// Changes the color of buttons 
+}
+.carousel-control-prev {
+	// left: 5%;
+}
+.carousel-control-next {
+	// right: 85%;
+}
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Breakpoint Desktop */
+@media screen and (min-width: 992px) {
+	.carousel {
+		height: 85vh;
+			
+		.carousel-item {
+
+			img {
+				height: 85vh;
+			}
+
+			.carousel-caption {
+				font-size: 30px;
+				
+				small {
+					font-size: 20px;
+				}
+			}             
+		}
+	}	
+}

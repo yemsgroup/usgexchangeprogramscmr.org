@@ -1,0 +1,19 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+    
+<?=isset($feature_data['url']) 
+    ? '<a href="' . $feature_data['url'] . '" target="_blank" class="text-custom-base">' 
+    : ''
+?>
+
+<?=isset($feature_data['icon']) 
+    ? '<i class="' . $feature_data['icon'] . ' fa-3x"></i>'
+    : ''; 
+?>
+
+<?=isset($feature_data['url']) 
+    ? '</a>' 
+    : '' 
+?>

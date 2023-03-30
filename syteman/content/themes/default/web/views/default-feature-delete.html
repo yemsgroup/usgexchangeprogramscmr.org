@@ -1,0 +1,37 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<?php if (is_array($feature_data)): ?>
+
+    <div class="col-lg-7">
+        <form class="form w-100 text-center" method="post" action="">
+            
+            <input type="hidden" name="control" value="<?=$feature_data['id']; ?>">
+                                    
+            <?=isset($feature_data['title'])
+                ? '<div class="mb-3">Please confirm you want to delete ' . $feature_data['title'] . '</div>' 
+                : '' 
+            ?>
+            
+            <div class="row">
+
+                <div class="mb-3 col-6">
+                    <input type="submit" value="Delete <?=Route::is_category_page() ? 'Category' : 'Feature' ?>" name="delete-feature<?=Route::is_category_page() ? '-category' : '' ?>" class="form-control px-3 btn-danger">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <a href="<?=$page ?>" class="form-control px-3 rounded-0">Cancel</a>
+                </div>
+                    
+            </div>
+        </form>
+    </div>
+
+<?php else: ?>
+
+    <div class="col-lg-7 text-center">
+        <a href="<?=$page . '' ?>" class="form-control px-3 rounded-0">Back</a>
+    </div>
+
+<?php endif; ?>

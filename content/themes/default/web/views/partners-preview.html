@@ -1,0 +1,31 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+    
+<?=isset($feature_data['url']) 
+    ? (!empty($feature_data['url']) 
+        ? '<a href="' . $feature_data['url'] . '" target="_blank">'
+        : ''
+    )
+    : ''
+?>
+
+<?=isset($feature_data['image']) 
+    ? Run::post_image(
+        $feature_data['image'],
+        $attributes = [
+            'alt' => (isset($feature_data['image_caption']) ? $feature_data['image_caption'] : ''),
+            'class' => 'partner-img'
+        ]
+    )
+    : ''; 
+?>
+
+<?=isset($feature_data['url']) 
+    ? (!empty($feature_data['url']) 
+        ? '</a>'
+        : ''
+    )
+    : '' 
+?>

@@ -1,0 +1,64 @@
+<?php if (isset($links)): ?>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow-sm" id="navigation">
+    
+    <div class="container">
+        <!-- Brand -->
+        <a href="<?=BASE_URL; ?>" class="navbar-brand logo">
+            <?=defined('ORG_LOGO') 
+				? (
+					ORG_LOGO != '' 
+						? '<img src="' . PATH_TO_IMAGES . ORG_LOGO . '" class="logo" />' 
+						: 'LOGO'
+				) 
+				: 'LOGO';
+			?>
+            <span class="d-none d-lg-inline m-0 h6 fw-bold text-uppercase"><?=ORG_TITLE ?></span>
+        </a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle mynav">
+            <i class="fas fa-bars h2 mb-0"></i>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="mynav">
+            <ul class="navbar-nav ms-auto text-end">
+
+                <?php foreach ($links as $nav_link): ?>
+                
+                    <li class="nav-item<?=
+                        ($nav_link['link'] == $current_page ? ' active' : '') . 
+                        (!empty($nav_link['sub_links']) ? ' dropdown' : '') 
+                    ?>">
+                        <a class="nav-link<?=(!empty($nav_link['sub_links']) ? ' dropdown-toggle' : '') ?>" href="<?=BASE_URL . '/' . $nav_link['link'] ?>" <?=(!empty($nav_link['sub_links']) ? 'data-bs-toggle="dropdown" aria-expanded="false"' : '') ?>><?=
+                            isset($nav_link['title']) 
+                                ? $nav_link['title'] 
+                                : 'nav title' 
+                        ?></a>
+
+                        <?php if (!empty($nav_link['sub_links'])): ?>
+
+                            <ul class="dropdown-menu">
+                                <?php foreach ($nav_link['sub_links'] as $sub_link): ?>
+
+                                    <li class="nav-item"><a class="nav-link" href="<?=BASE_URL . '/' . $sub_link['link'] ?>"><?=
+                                        isset($sub_link['title']) 
+                                            ? $sub_link['title'] 
+                                            : 'sub_nav title' 
+                                    ?></a></li>
+
+                                <?php endforeach; ?>
+                            </ul>
+
+                        <?php endif; ?>
+                    </li>
+                    
+                <?php endforeach; ?>
+
+            </ul>
+        </div>
+
+    </div>
+
+</nav>
+<?php endif; ?>

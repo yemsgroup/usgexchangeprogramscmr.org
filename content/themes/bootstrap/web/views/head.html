@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Page Title and Meta Information -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title><?= isset($title) ? $title : '' ?></title>
+	<meta name="keywords" content="<?= isset($keywords) ? $keywords : '' ?>" />
+	<meta name="author" content="<?= isset($author) ? $author : '' ?>" />
+	<meta name="description" content="<?= isset($description) ? $description : '' ?>" />
+
+	<!-- Canonical -->
+	<?=defined('DOMAIN') ? '<link rel="canonical" href="https://' . DOMAIN . '"/>' : ''  ?>
+
+	<!-- Base URL -->
+	<?=defined('BASE_URL') ? '<base href="' . BASE_URL . '" target="" />' : ''; ?>
+
+	<!-- Browser Icon -->
+	<link rel="shortcut icon" href="<?=defined('ORG_ICON')
+		? BASE_URL . '/' . ORG_ICON
+		: (
+			defined('BASE_URL') ? BASE_URL : $_SERVER['SERVER_NAME'] . '/favicon.svg'
+		)
+	?>">
+
+	<!-- JSON SDM for Company Information -->
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "Organisation",
+			"name": "<?=defined('ORG_TITLE') ? ORG_TITLE : ''; ?>",
+			"legalName": "<?=defined('LEGAL_NAME') ? LEGAL_NAME : (defined('ORG_TITLE') ? ORG_TITLE : ''); ?>",
+			"alternateName": "<?=defined('ORG_ACRONYM') ? ORG_ACRONYM : ''; ?>",
+			"description": "<?=defined('ORG_DESCRIPTION') ? strip_tags(ORG_DESCRIPTION) : ''; ?>",
+			"logo": "<?=(defined('PATH_TO_IMAGES') ? PATH_TO_IMAGES : '') . (defined('ORG_LOGO') ? ORG_LOGO : 'logo.png') ?>",
+			"foundingDate": "<?=defined('FOUNDING_DATE') ? FOUNDING_DATE : ''; ?>",
+			"contactPoint": [
+				{ 
+					"@type": "ContactPoint",
+					"contactType": "customer service",
+					"telephone": "<?=defined('ORG_NUMBER') ? ORG_NUMBER : ''; ?>",
+					"email": "<?=defined('ORG_EMAIL') ? ORG_EMAIL : ''; ?>"
+				}
+			],
+			"url": "<?=defined('BASE_URL') ? BASE_URL : $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME']; ?>",
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "<?=defined('ORG_COUNTRY') ? ORG_COUNTRY : ''; ?>",
+				"addressRegion": "<?=defined('ORG_REGION') ? ORG_REGION : ''; ?>",
+				"addressLocality": "<?=defined('ORG_LOCALITY') ? ORG_LOCALITY : ''; ?>",
+				"postOfficeBoxNumber": "<?=defined('ORG_PO_BOX') ? ORG_PO_BOX : ''; ?>",
+				"streetAddress": "<?=defined('ORG_CONTACT') ? ORG_CONTACT : ''; ?>"
+			},
+			"sameAs": [
+				<?php if (function_exists('list_social_media_links')) list_social_media_links(); ?> ""
+			]
+		}
+	</script>
+
+	<!-- Open Graph Protocol Setups -->		
+	<meta property="fb:app_id" content="<?= defined('FB_APP_ID') ? FB_APP_ID : ''; ?>" />
+	<meta property="og:type" content="<?= isset($ogType) ? $ogType : 'website'; ?>" />
+	<meta property="og:site_name" content="<?= defined('ORG_TITLE') ? ORG_TITLE : ''; ?>" />
+	<meta property="og:title" content="<?= $title ?>" />
+	<meta property="og:description" content="<?= $description ?>" />
+	<meta property="og:url" content="<?= (defined('BASE_URL') ? BASE_URL : '') . (defined('PATH_INFO') ? '' . PATH_INFO : '') . (isset($url) ? '/' . $url : ''); ?>" />
+	<meta property="og:image" content="<?= (defined('PATH_TO_IMAGES') ? PATH_TO_IMAGES : '') . $image ?>" />
+
+	<!-- Include CSS Styles if any -->
+	<?php
+		if (file_exists(PATH_TO_THEME . '/includes/dependencies-css.php')) 
+            include_once PATH_TO_THEME . '/includes/dependencies-css.php';
+	?>
+
+	<!-- 
+		Get from and ADD Google Analytics JS Tracking Tag
+		Only active when in PRODUCTION to eliminate fetch time during DEVELOPMENT 
+	-->
+	<?php if (!defined('DEVELOPMENT')): ?>
+	<?php endif; ?>
+
+	<!--[if lt IE 9]>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+<!-- 
+	Get and add Facebook Required Code for FB Plugins to work 
+	Only active when in PRODUCTION to eliminate fetch time during DEVELOPMENT 
+-->

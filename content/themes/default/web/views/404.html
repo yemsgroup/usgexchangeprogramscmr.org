@@ -1,0 +1,17 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can var_dump($page_data) to see all what content is being returned. 
+-->
+
+<div class="">
+
+    <div class="p-3 shadow-sm" style="width: 20%; margin: auto;">
+        <?=Run::post_image('404.svg'); ?>
+        <p class="small"></p>
+    </div>
+    
+</div>
+
+<div class="text-center">
+    <?=$page_data['content'] ?>
+</div>

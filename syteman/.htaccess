@@ -1,0 +1,11 @@
+# This checks if the mod_rewrite.co Module is active before writing rewrite rules. 
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # These conditions ensure that the file or directory does not exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Then creates and atom (grouped bracket) of everything after the domain name which is passed to index.php
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>

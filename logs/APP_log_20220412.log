@@ -1,0 +1,4 @@
+[17:37:33] [error] Problem saving contactform submission to DB ->  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'
+[17:37:52] [error] Problem saving contactform submission to DB ->  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'
+[17:39:16] [error] Problem saving contact form submission to DB ->  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'
+[17:39:37] [error] Problem saving contact form submission to DB ->  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'

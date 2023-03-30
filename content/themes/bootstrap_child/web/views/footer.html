@@ -1,0 +1,20 @@
+<footer class="py-5 text-center">
+
+	<div class="container">
+		<div class="row justify-content-center">
+
+			<div class="col-10">
+				<p><?= defined('ORG_DESCRIPTION')?ORG_DESCRIPTION:''; ?></p>
+			</div>
+		
+			<div class="col-10">
+				<small>
+					<p><strong><?= defined('ORG_ACRONYM') ? '&copy; ' . ORG_ACRONYM . ', ' . date('Y') : ''; ?></strong> &emsp; <a href="https://www.yems.group" target="_blank" title="Strategy, Design and Dev't done with awesomeness and lots of coffee at Y'G">-by [Y'G]</a></p>
+				</small>
+			</div>
+		</div>
+	</div>
+	
+	<a onclick="scroll_to_top()" id="backToTop" title="Back to Top" data-toggle="tooltip">&uarr;</a>
+
+</footer>

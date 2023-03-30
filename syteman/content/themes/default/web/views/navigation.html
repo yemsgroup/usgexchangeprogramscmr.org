@@ -1,0 +1,45 @@
+<?php if (isset($links)): ?>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white shadow-sm" id="navigation">
+    <div class="container">
+
+        <!-- Brand -->
+        <a href="" class="navbar-brand logo">
+            <img src="<?=PATH_TO_SYM_IMAGES ?>/logo.svg" alt="" />
+        </a>
+    
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler ms-auto p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav ms-auto text-end text-lg-start">
+                <?php foreach ($links as $nav_links):?>
+                        
+                    <li class="nav-item<?php if ($nav_links['link'] == $current_page) echo ' active' ?>">
+                        <a 
+                            class="nav-link" 
+                            href="syteman/<?=$nav_links['link'] ?>"
+                            target="<?=isset($nav_links['target']) ? $nav_links['target'] . '"' : '' ?>"
+                        >
+                            <?=isset($nav_links['icon']) 
+                                ? '<i class="fas fa-' . $nav_links['icon'] . '"></i>' 
+                                : (
+                                    isset($nav_links['title']) 
+                                        ? $nav_links['title'] 
+                                        : ''
+                                )
+                            ?>
+                        </a>
+                    </li>
+                    
+                <?php endforeach; ?>
+
+                <?=isset($_SESSION['adminid']) ? '<li class="nav-item" data-bs-toggle="tooltip" title="Logout"><a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt h5 m-0 p-0"></i></a></li>' : '' ?>
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+<?php endif; ?>

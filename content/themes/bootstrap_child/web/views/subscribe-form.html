@@ -1,0 +1,52 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can var_dump($page_data) to see all what content is being returned. 
+-->
+
+<div class="page-content">
+    
+    <?php if (Run::has_flash_message()): ?>
+
+        <?php $flash_messages = Run::get_flash_message(); ?>
+
+        <?php if (isset($flash_messages['errors']) && !empty($flash_messages['errors'])): ?>                
+        <div class="feedback small">
+            <?php 
+                if (is_array($flash_messages['errors'])) foreach ($flash_messages['errors'] as $line) echo '<strong>[Error]</strong> ' . $line . '<br>';
+                    else echo '<strong>[Error]</strong> ' . $flash_messages['errors'] . '<br>';
+            ?>
+        </div>            
+        <?php endif; ?>
+
+        <?php if (isset($flash_messages['feedback']) && !empty($flash_messages['feedback'])): ?>                
+        <div class="feedback small">
+            <?php 
+                if (is_array($flash_messages['feedback'])) foreach ($flash_messages['feedback'] as $line) echo '<strong>[Feedback]</strong> ' . $line . '<br>';
+                    else echo '<strong>[Feedback]</strong> ' . $flash_messages['feedback'] . '<br>';
+            ?>
+        </div>            
+        <?php endif; ?>
+
+        <?php if (isset($flash_messages['submitted'])) $submitted = $flash_messages['submitted']; ?>
+
+    <?php endif; ?>
+    
+    <?=isset($page_data['page_content']) ? $page_data['page_content'] : '' ?>
+
+    <form method="post" action=""  class="d-lg-flex justify-content-center" role="form" />
+    
+        <div class="mb-3">
+            <input type="text" name="first_name" placeholder="Your Names" class="form-control text-center text-lg-start" id="first_name" value="<?php if(isset($submitted["first_name"])) echo $submitted['first_name']; ?>" /> 
+        </div>
+
+        <div class="mb-3">
+            <input type="email" name="email" placeholder="Your Email" class="form-control text-center text-lg-start" id="email" value="<?php if(isset($submitted["email"])) echo $submitted['email']; ?>" />
+        </div>
+
+        <div class="mb-3">
+            <input type="submit" name="submit" value="Subscribe" class="form-control btn btn-light text-lg-start" />
+        </div>
+        
+    </form>
+
+</div>

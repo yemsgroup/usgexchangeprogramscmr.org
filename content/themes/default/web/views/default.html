@@ -1,0 +1,30 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can <?php // var_dump($page_data) ?> to see all what content is being returned. 
+-->
+
+<?php if (isset($page_data['image'])): ?>
+    <?php if (!empty($page_data['image'])): ?>
+        <div class="page-image">
+
+            <div class="image">
+                <?=Run::post_image(
+                    $page_data['image'], 
+                    ['alt' => (isset($page_data['image_caption']) ? strip_tags($page_data['image_caption']) : null)]
+                ); ?>
+            </div>
+
+            <?php if ($page_data['image_caption'] != null): ?>
+                <p class="image-caption p-2 pb-0 line-height-normal"><?=$page_data['image_caption'] ?></p>
+            <?php endif; ?>
+            
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<div class="page-content p-5">
+
+    <?=isset($page_data['title']) ? '<h1>' . $page_data['title'] . '</h1>' : '' ?>
+    <?=isset($page_data['content']) ? $page_data['content'] : '' ?>
+
+</div>

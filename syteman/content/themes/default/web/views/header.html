@@ -1,0 +1,18 @@
+<!-- Header Section -->
+<header class="sticky-top bg-white shadow-sm" id="header"></header>
+
+<?php
+
+	if (isset($nav_links_to_use)) {
+		
+		echo Run::render_template_with_content(
+			PATH_TO_SYM_THEME . '/web/views/navigation.html', 
+			array(
+				'links' => $nav_links_to_use,
+				'current_page' => explode('/', PATH_INFO)[1]
+			)
+		);			
+
+	}
+
+?>

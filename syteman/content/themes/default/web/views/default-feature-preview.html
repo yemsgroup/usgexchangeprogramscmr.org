@@ -1,0 +1,74 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<div class="col-11 col-lg-3 mb-5">
+    <div class="feature">
+    
+        <div class="image position-relative">
+            <?=isset($feature_data['image']) 
+                ? Run::post_image(
+                    $feature_data['image'], 
+                    $alt = isset($feature_data['image_caption']) 
+                        ? $feature_data['image_caption'] 
+                        : ''
+                )
+                : ''; 
+            ?>
+
+            <section class="controls text-end position-absolute w-100 p-1">
+                <a href="<?=$page; ?>/<?=$feature_data['id'] ?>" data-toggle="tooltip" title="Details" class="badge p-2 px-2 rounded-0 bg-custom-primary text-white"><i class="fas fa-eye"></i> details</a>
+                <a href="<?=$page; ?>/<?=$feature_data['id'] ?>/edit" data-toggle="tooltip" title="Edit" class="badge p-2 px-2 rounded-0 bg-custom-secondary text-white"><i class="fas fa-pen-square"></i></a>
+                <a href="<?=$page; ?>/<?=$feature_data['id'] ?>/delete" data-toggle="tooltip" title="Edit" class="badge p-2 px-2 rounded-0 bg-danger text-white"><i class="fas fa-trash"></i></a>
+            </section>
+            
+            <section class="position-absolute bottom-0 p-3">    
+                <?=isset($feature_data['category_title']) 
+                    ? '<span class="badge bg-secondary">' . $feature_data['category_title'] . '</span>' 
+                    : '' 
+                ?>
+        
+                <?=isset($feature_data['role']) 
+                    ? '<span class="badge bg-secondary">' . ($feature_data['role'] == 0 ? 'Admin' : 'User') . '</span>' 
+                    : '' 
+                ?>
+        
+                <?=isset($feature_data['is_active']) 
+                    ? '<span class="badge' . ($feature_data['is_active'] == 0 ? ' bg-secondary">inactive' : ' bg-custom-primary">active') . '</span>' 
+                    : '' 
+                ?>
+            </section>
+        </div>
+        
+        <div class="text">
+            <?=isset($feature_data['title']) 
+                ? '<h5 class="h6">' . $feature_data['title'] . '</h5>' 
+                : '' 
+            ?>
+            <?=isset($feature_data['icon']) 
+                ? '<p class=""><i class="' . $feature_data['icon'] . '"></i></p>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['first_name']) 
+                ? '<h5 class="h6">' . $feature_data['first_name'] . ' ' . $feature_data['last_name'] . '</h5>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['email']) 
+                ? '<p class="small">' . $feature_data['email'] . '</p>' 
+                : '' 
+            ?>
+    
+            <?=isset($feature_data['description'])
+                ? '<p class="small line-height-normal">' . strip_tags($feature_data['description']) . '</p>'
+                : (
+                    isset($feature_data['content']) 
+                        ? '<p>' . substr(strip_tags($feature_data['content']), 0, 100) . '...</p>' 
+                        : ''
+                )
+            ?>
+        </div>
+        
+    </div>
+</div>

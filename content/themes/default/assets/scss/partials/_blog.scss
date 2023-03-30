@@ -1,0 +1,86 @@
+/* Blog Display */
+.blog-card {
+	padding: 0;
+	background-color: #ffffff;
+	box-shadow: 
+		0 4px 5px 0 rgba(0, 0, 0, 0.14),
+		0 1px 10px 0 rgba(0, 0, 0, 0.12), 
+		0 2px 4px -1px rgba(0, 0, 0, 0.3)
+	;
+
+	&:hover {
+		box-shadow: 
+			0 16px 24px 2px rgba(0, 0, 0, 0.14),
+			0 6px 30px 5px rgba(0, 0, 0, 0.12), 
+			0 8px 10px -5px rgba(0, 0, 0, 0.3)
+		;
+	} 
+	
+	.image {
+		height: 200px;
+	}
+
+	.text {
+		padding: 25px;
+
+		p {
+			margin-bottom: 0;
+		}
+
+		small, .small {
+			color: #666;
+		}
+	}
+}
+
+
+/* Featured Sections with full Image and text on top */
+.featured {
+	height: 300px;
+	position: relative;
+	
+	.image {
+		height: 100%;
+
+		img {
+			transition: transform 0.5s;
+		}
+	}
+
+	h1, h1, h3, h4, h5, h6, p {
+		color: #EEE !important;
+	}
+
+	.text {
+		position: absolute;
+		bottom: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		width: 100%;
+		height: 100%;
+		padding: 40px;
+		background: rgba(#000000, 0.6);
+		color: #ffffff;
+
+		&:hover {
+			background: rgba(#000000, 0.7);
+		}
+	}
+
+	&:hover {
+		img {
+			transform: scale(1.2);
+		}
+	}
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+}
