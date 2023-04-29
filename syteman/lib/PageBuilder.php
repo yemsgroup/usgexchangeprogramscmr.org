@@ -509,7 +509,7 @@ class PageBuilder extends Db
                     $feature_link = Route::is_feature_page()[1];
                     
                     $feature_data = $object->fetch_data_for_this_feature($feature_link)[0];
-                    $template = Run::get_template_file($page_data['template'], $object->template_preview);
+                    $template = Run::get_template_file(isset($object->template_detail) ? $object->template_detail : null);
                     
                 } else {
                     
@@ -523,20 +523,20 @@ class PageBuilder extends Db
                             $category_data = $object->fetch_data_for_this_category($category)[0];
                             $all_features = $object->fetch_features_by_category($category);
                             $features = $object->fetch_features_by_category($category, ['limit' => $results_limit]);
-                            $template = Run::get_template_file($page_data['template'], $object->template_preview);
+                            $template = Run::get_template_file($page_data['template_filename'], (isset($object->template_preview) ? $object->template_preview : null));
 
                         } else {
                             
                             $all_features = $object->fetch_all_feature_categories();
                             $features = $object->fetch_all_feature_categories(['limit' => $results_limit]);
-                            $template = Run::get_template_file($page_data['template'], 'default-feature-category-preview.html');
+                            $template = Run::get_template_file($page_data['template_filename'], 'default-feature-category-preview.html');
                             
                         }
 
                     } else {
 
                         $features = $object->fetch_all_features(['limit' => $results_limit]);
-                        $template = Run::get_template_file($page_data['template'], $object->template_preview);
+                        $template = Run::get_template_file($page_data['template_filename'], (isset($object->template_preview) ? $object->template_preview : null));
 
                     }
 
@@ -556,7 +556,9 @@ class PageBuilder extends Db
                         $paginate = null;
 
                 }
+
                 
+                // Display the Information
                 echo Run::render_template_with_content(
                     PATH_TO_THEME . $layout,
                     [
