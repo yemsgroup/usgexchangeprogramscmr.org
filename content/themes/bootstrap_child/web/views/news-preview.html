@@ -1,0 +1,49 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<div class="col-lg-4 my-3 mb-5">
+    <div class="update">
+    
+        <div class="image position-relative">
+            <?=isset($feature_data['image']) 
+                ? Run::post_image(
+                    $feature_data['image'], 
+                    ['alt' => (isset($feature_data['image_caption']) ? strip_tags($feature_data['image_caption']) : null)]
+                )
+                : ''; 
+            ?>
+
+            <section class="position-absolute bottom-0 mb-3 py-1 px-3 bg-custom-secondary text-white text-uppercase small">News Center</section>
+        </div>
+        
+        <div class="text card-body">
+            <?=isset($feature_data['title']) 
+                ? '<h5 class="text-uppercase">' . $feature_data['title'] . '</h5>' 
+                : '' 
+            ?>
+    
+            <?=!empty($feature_data['date'])
+                ? '<p class="small"><i class="fas fa-fw fa-calendar"></i> ' . date('dS M Y', strtotime($feature_data['date'])) . '</p>'
+                : ''
+            ?>
+    
+            <?=isset($feature_data['link']) 
+                ? '<a href="' . BASE_URL . '/' . CURRENT_PAGE 
+                    . (
+                        isset($page_data['link']) 
+                            ? $page_data['link'] 
+                            : (
+                                isset($feature_page)
+                                    ? $feature_page
+                                    : ''
+                            )
+                    )
+                    . '/' . $feature_data['link']
+                    . '" class="btn btn-sm btn-custom-secondary pe-5">learn more &rarr;</a>' 
+                : '' 
+            ?>        
+        </div>
+        
+    </div>
+</div>

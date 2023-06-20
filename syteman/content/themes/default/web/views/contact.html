@@ -1,0 +1,88 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can var_dump($page_data) to see all what content is being returned. 
+-->
+
+<?php if (isset($page_data['page_image'])): ?>
+    <?php if ($page_data['page_image'] != ''): ?>
+        <div class="page-image">
+            <?=Run::post_image($page_data['page_image'], $alt = $page_data['page_image_caption']); ?>
+
+            <?php if ($page_data['page_image_caption'] != null): ?>
+                <p class="small"><?=$page_data['page_image_caption'] ?></p>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+<div class="page-content">
+    
+    <?php if (Run::has_flash_message()): ?>
+
+        <?php $flash_messages = Run::get_flash_message(); ?>
+
+        <?php if (isset($flash_messages['errors']) && !empty($flash_messages['errors'])): ?>                
+        <div class="feedback small">
+            <?php 
+                if (is_array($flash_messages['errors'])) foreach ($flash_messages['errors'] as $line) echo '<strong>[Error]</strong> ' . $line . '<br>';
+                    else echo '<strong>[Error]</strong> ' . $flash_messages['errors'] . '<br>';
+            ?>
+        </div>            
+        <?php endif; ?>
+
+        <?php if (isset($flash_messages['feedback']) && !empty($flash_messages['feedback'])): ?>                
+        <div class="feedback small">
+            <?php 
+                if (is_array($flash_messages['feedback'])) foreach ($flash_messages['feedback'] as $line) echo '<strong>[Feedback]</strong> ' . $line . '<br>';
+                    else echo '<strong>[Feedback]</strong> ' . $flash_messages['feedback'] . '<br>';
+            ?>
+        </div>            
+        <?php endif; ?>
+
+        <?php if (isset($flash_messages['submitted'])) $submitted = $flash_messages['submitted']; ?>
+
+    <?php endif; ?>
+    
+    <?=isset($page_data['page_content']) ? $page_data['page_content'] : '' ?>
+
+    <form method="post" action="daos/FormRequests/contact-request.php"  class="" role="form" />
+    
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" name="names" class="form-control" id="names" value="<?php if(isset($submitted["names"])) echo $submitted['names']; ?>" /> 
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label> 
+            <input type="email" name="email" class="form-control" id="email" value="<?php if(isset($submitted["email"])) echo $submitted['email']; ?>" />
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" class="form-control" id="subject" value="<?php if(isset($submitted["subject"])) echo $submitted['subject']; ?>" >
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea name="message" class="form-control" id="message" rows="8"><?php if(isset($submitted["message"])) echo $submitted['message']; ?></textarea>
+        </div>
+
+        <div class="row">
+        
+            <div class="form-group col-12 order-3"><input type="submit" name="submit" value="Send Message" class="form-control btn btn-primary" /></div>					        	
+            <div class="form-group col-lg-8 order-1">
+                <label for="captcha">Captcha</label> 
+                <span id="captcha-info" class="info"></span><br/> 
+                <input type="text" name="captcha" id="captcha" class="form-control captchaInputBox" placeholder="copy the captcha code">
+            </div>
+
+            <div class="form-group col-lg-4 order-2 d-md-flex justify-content-between pt-4 pl-md-0">
+                <img id="captcha_code" src="web/captcha-code.php" class="" />
+                <button name="refresh" class="btn Refresh btn btn-secondary cursor" onClick="refreshCaptcha();" id="refresh"><i class="fas fa-redo"></i></button>
+            </div>
+        </div>
+        
+    </form>
+
+</div>

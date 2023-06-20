@@ -1,0 +1,15 @@
+<footer>
+
+	<p><?= defined('ORG_DESCRIPTION')?ORG_DESCRIPTION:''; ?></p>
+
+	<small>
+		<p><strong><?= defined('ORG_ACRONYM') ? '&copy; ' . ORG_ACRONYM . ', ' . date('Y') : ''; ?></strong></p>
+	
+		<a href="<?=BASE_URL . '/syteman' ?>">admin area</a> - 
+		<a href="http://mail.<?= defined('DOMAIN')?DOMAIN:'' ?>" target="_blank">webm&commat;il</a>
+		&emsp; -<a href="https://www.quodatics.com" target="_blank" title="Strategy, Design and Dev't done with awesomeness and lots of coffee at Quodatics">[Quodatics]</a>
+	</small>
+	
+	<a onclick="scroll_to_top()" id="backToTop" title="Back to Top" data-toggle="tooltip">&uarr;</a>
+
+</footer>

@@ -1,0 +1,63 @@
+// Menu Bar for Desktop and above
+.navbar {
+
+    .logo {
+		img {
+			height: 30px;
+		}
+	}
+
+	&.scrolled {
+		.logo {
+			img {
+				height: 30px;
+			}
+		}
+	}
+
+    .nav-item {
+    
+        .nav-link {
+            color: $custom-base-color;
+            font-weight: bold;
+            font-size: small;
+            text-transform: uppercase;
+        }
+
+        &:hover, &.active {
+
+            .nav-link {
+                color: $custom-primary-color !important;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: right;
+
+        .nav-item {
+
+            .nav-link {}
+        }
+    }
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+
+    .navbar {
+
+        .dropdown-menu {
+            min-width: max-content;
+            text-align: left;
+        }
+    }
+}

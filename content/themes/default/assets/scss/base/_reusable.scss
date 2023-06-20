@@ -1,0 +1,303 @@
+.image {
+	overflow: hidden;
+	margin-bottom: 0px;
+
+	img {
+		width: 100%;
+		min-height: 100%;
+		object-fit: cover;
+	}
+}
+
+.line-height-normal {
+	line-height: normal;
+}
+
+.letter-spacing-normal {
+	letter-spacing: normal;
+}
+
+.quote {
+	color: #999999;
+
+	&::before {
+		content: "\201C";
+		font-family: $custom-accent-font;
+		font-size: 2em;
+		position: absolute;
+		left: 0;
+	}
+	
+	&::after {
+		content: "\201D";
+		font-family: $custom-accent-font;
+		font-size: 2em;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+
+	&-icon {
+		background: url(../../web/pics/quote.png) no-repeat;
+		background-size: contain;
+		
+		&-bottom {
+			@extend .quote-icon;
+			background-position: bottom right;
+			background-size: 15%;
+		}
+	}
+}
+
+.error {
+	font-size: small;
+	color: #999;
+}
+
+.author {
+	font-style: italic;
+	font-family: $custom-title-font;
+	font-size: x-small;
+}
+
+.maintext {
+	line-height: 110%;
+	font-size: 30px;
+}
+
+@each $font, $value in $custom-fonts {
+	.text-custom-font-#{$font} {
+		font-family: $value;
+	}
+}
+
+@each $color, $value in $custom-colors {
+	.bg-custom-#{$color} {
+		background: $value;
+
+		a {
+			color: #FFFFFF;
+
+			&:hover {
+				color: #dddddd;
+			}
+		}
+
+		&-hovered {
+			&:hover {
+				background: $custom-base-color;
+			}
+		}
+
+		&-transparent {
+			background: transparentize($value, 0.1);
+		}
+	}
+
+	.text-custom-#{$color} {
+		color: $value !important;
+	}
+
+	.shadow-custom-#{$color} {
+		@include shadow($value);
+
+		&-sm {
+			@include shadow-sm($value);
+		}
+	}
+
+	.color-overlay-custom-#{$color} {
+		&::before {
+			content: " ";
+
+			display: block;
+			position: absolute;
+			
+			width: 100%;
+			height: 100%;
+	
+			background: transparentize($value, 0.5);
+		}
+
+		&-gradient {
+			@extend .color-overlay-custom-#{$color};
+
+			&::before {
+				background: linear-gradient(to top, transparentize($value, 0.1), transparentize($value, 0.5), transparent);
+			}
+		}
+
+		&-to-transparent {
+			@extend .color-overlay-custom-#{$color};
+
+			&::before {
+				background: linear-gradient(to top, transparentize($value, 0.1), transparent);
+			}
+
+			@each $side in $directions {
+
+				&-to-#{$side} {
+					@extend .color-overlay-custom-#{$color}-to-transparent;
+
+					&::before {
+						background: linear-gradient(to #{$side}, transparentize($value, 0.1), transparent);
+					}
+				}
+			}
+		}
+	}
+
+	.custom-line-overhead-#{$color} {
+		&::before {
+			display: block;
+			
+			width: 25%;
+			height: 10px;
+			margin: auto;
+			margin-bottom: 15px;
+	
+			background: $value;
+		}
+	}
+
+	.btn-custom-#{$color} {
+		padding: 5px 10px;
+
+		background: $value !important;
+
+		color: #FFFFFF;
+
+		&:hover {
+			background: shade($value, 1);
+			color: #FFFFFF;
+		}
+	}
+}
+
+.btn-custom-light {
+	color: #000000;
+}
+
+.shadow-custom {
+	@include shadow(#18181850);
+
+	&-sm {
+		@include shadow-sm(#18181850);
+	}
+}
+
+@each $color, $value in $social-colors {
+	.bg-custom-#{$color} {
+		background: $value !important;
+		color: #FFFFFF;
+
+		&:hover {
+			background: #FFFFFF !important;
+			color: $value;
+		}
+
+		&-reverse {
+			background: #FFFFFF !important;
+			color: $value;
+		}
+	}
+
+	.text-custom-#{$color} {
+		color: $value !important;
+
+		&:hover {
+			padding-left: 1px;
+			padding-right: 1px;
+
+			background: $value;
+			border-radius: 100%;
+
+			color: #FFFFFF !important;
+		}
+	}
+}
+
+.bg-custom-gradient {
+	background: linear-gradient(
+		to bottom,
+		$custom-primary-color,
+		$custom-secondary-color
+	);
+
+	&-reverse {
+		background: linear-gradient(
+			to bottom,
+			$custom-secondary-color,
+			$custom-primary-color
+		);
+	}
+}
+
+.block {
+	height: 100px;
+}
+
+.d-block {
+	float: left;
+
+	width: 100%;
+	margin: 15px auto;
+}
+
+.d-flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	margin: 15px auto;
+}
+
+.spacer {
+	display: inline-block;
+	
+	width: 100%;
+	margin: 15px 0;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.small {
+	font-size: small;
+}
+
+.lead {
+	font-size: larger;
+}
+
+.rounded-custom {
+	border-radius: 25px;
+}
+
+.cursor {
+	cursor: pointer;
+}
+
+.btn {
+	// padding: 5px 10px;
+	background: #FFFFFF;
+	@include shadow-sm($custom-base-color);
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+	
+	.d-flex {
+		flex-direction: row;
+	}
+	
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+	
+}

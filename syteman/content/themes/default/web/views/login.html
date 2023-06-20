@@ -1,0 +1,68 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can var_dump($page_data) to see all what content is being returned. 
+-->
+
+<div class="page-content">
+
+    <?php if (Run::has_flash_message()): ?>
+
+        <?php $flash_messages = Run::get_flash_message(); ?>
+
+        <?php if (isset($flash_messages['errors']) && !empty($flash_messages['errors'])): ?>                
+        <div class="feedback bg-danger text-white small">
+            <?php 
+                if (is_array($flash_messages['errors'])) foreach ($flash_messages['errors'] as $line) echo '<strong>[Error]</strong> ' . $line . '<br>';
+                    else echo '<strong>[Error]</strong> ' . $flash_messages['errors'] . '<br>';
+            ?>
+        </div>            
+        <?php endif; ?>
+
+        <?php if (isset($flash_messages['feedback']) && !empty($flash_messages['feedback'])): ?>                
+        <div class="feedback small">
+            <?php 
+                if (is_array($flash_messages['feedback'])) foreach ($flash_messages['feedback'] as $line) echo '<strong>[Feedback]</strong> ' . $line . '<br>';
+                    else echo '<strong>[Feedback]</strong> ' . $flash_messages['feedback'] . '<br>';
+            ?>
+        </div>            
+        <?php endif; ?>
+
+        <?php if (isset($flash_messages['submitted'])) $submitted = $flash_messages['submitted']; ?>
+
+    <?php endif; ?>
+
+    <form action="" method="POST" class="mx-auto mt-5" role="form">
+    
+        <div class="row justify-content-center">
+            <div class="form-group col-11 col-lg-3 mb-3">
+                <label for="username" class="sr-only">username</label>
+                <input type="email" name="username" class="form-control p-3" placeholder="username" required autofocus />
+            </div>
+        
+            <div class="form-group col-11 col-lg-3 mb-3">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control p-3" placeholder="Password" required>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="w-100 order-3"></div>
+            <div class="form-group col-11 col-lg-6 order-4">
+                <input type="submit" name="login" class="btn btn-custom-primary btn-block p-3" value="Login" />
+            </div>
+
+            <div class="form-group col-5 col-lg-4 mb-3 order-1">
+                <span id="captcha-info" class="info"></span>
+                <input type="text" name="captcha" id="captcha" class="form-control p-3 captchaInputBox" placeholder="copy the captcha code">
+            </div>
+        
+            <div class="form-group col-6 col-lg-2 mb-3 order-2 d-md-flex justify-content-between pl-md-0">
+                <img id="captcha_code" src="web/captcha-code.php" class="" />
+                <button name="refresh" class="cursor p-3" onClick="refreshCaptcha();" id="refresh"><strong>&orarr;</strong></button>
+            </div>
+            
+        </div>
+    
+    </form>
+
+</div>

@@ -1,0 +1,59 @@
+// Every thing about header styles
+/* Website Header */
+main {
+	
+	.page-image {
+		margin-bottom: 25px;
+	}
+
+	.image-caption {
+		font-size: small;
+		text-align: right;
+	}
+
+	.page-block {
+		.page-banner {
+			position: relative;
+	
+			.image {
+				img {
+					border-radius: 20px;
+				}
+			}
+	
+			.page-title {
+				position: absolute;
+				bottom: -10px;
+				
+				background: $custom-primary-color;
+				border-radius: 20px;
+				
+				font-size: 30px;
+				color: #ffffff !important;
+	
+				padding: 20px 30px;
+				width: 100%;
+			}
+		}
+	}
+	
+	.page-content {
+		padding: 0 25px; 
+		
+		img {
+			max-width: 100%;
+		}
+	}
+	
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+
+}

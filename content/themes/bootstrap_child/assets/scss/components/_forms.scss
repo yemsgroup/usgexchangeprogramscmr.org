@@ -1,0 +1,21 @@
+.corporate-button {
+    background: #ffffff;
+    border-radius: 0;
+    border: none;
+    box-shadow: 0px 0px 1.5px $custom-primary-color;
+
+    padding-left: 25px;
+    padding-right: 25px;
+
+    color: $custom-primary-color;
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+}

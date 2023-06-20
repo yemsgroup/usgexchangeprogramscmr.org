@@ -1,0 +1,96 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $page_data associative array.
+    You can <?php // var_dump($page_data) ?> to see all what content is being returned. 
+-->
+
+<?php if (isset($page_data['image'])): ?>
+    <?php if ($page_data['image'] != ''): ?>
+        <div class="col-12 mt-lg-4">
+            <div class="page-image">
+                <?=Run::post_image($page_data['image'], $alt = $page_data['image_caption']); ?>
+    
+                <?php if ($page_data['image_caption'] != null): ?>
+                    <p class="small"><?=$page_data['image_caption'] ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+<div class="col-lg-8">
+    <div class="page-content p-5">
+        
+        <?php if (Run::has_flash_message()): ?>
+    
+            <?php $flash_messages = Run::get_flash_message(); ?>
+    
+            <?php if (isset($flash_messages['errors']) && !empty($flash_messages['errors'])): ?>                
+            <div class="feedback small">
+                <?php 
+                    if (is_array($flash_messages['errors'])) foreach ($flash_messages['errors'] as $line) echo '<strong>[Error]</strong> ' . $line . '<br>';
+                        else echo '<strong>[Error]</strong> ' . $flash_messages['errors'] . '<br>';
+                ?>
+            </div>            
+            <?php endif; ?>
+    
+            <?php if (isset($flash_messages['feedback']) && !empty($flash_messages['feedback'])): ?>                
+            <div class="feedback small">
+                <?php 
+                    if (is_array($flash_messages['feedback'])) foreach ($flash_messages['feedback'] as $line) echo '<strong>[Feedback]</strong> ' . $line . '<br>';
+                        else echo '<strong>[Feedback]</strong> ' . $flash_messages['feedback'] . '<br>';
+                ?>
+            </div>            
+            <?php endif; ?>
+    
+            <?php if (isset($flash_messages['submitted'])) $submitted = $flash_messages['submitted']; ?>
+    
+        <?php endif; ?>
+        
+        <?=isset($page_data['page_content']) ? $page_data['page_content'] : '' ?>
+    
+        <form method="post" action=""  class="" role="form" />
+        
+            <div class="mb-3">
+                <label for="name">Your Name</label>
+                <input type="text" name="names" class="form-control" id="names" value="<?php if(isset($submitted["names"])) echo $submitted['names']; ?>" /> 
+            </div>
+    
+            <div class="mb-3">
+                <label for="email">Email</label> 
+                <input type="email" name="email" class="form-control" id="email" value="<?php if(isset($submitted["email"])) echo $submitted['email']; ?>" />
+            </div>
+    
+            <div class="mb-3">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" class="form-control" id="subject" value="<?php if(isset($submitted["subject"])) echo $submitted['subject']; ?>" >
+            </div>
+    
+            <div class="mb-3">
+                <label for="message">Message</label>
+                <textarea name="message" class="form-control" id="message" rows="8"><?php if(isset($submitted["message"])) echo $submitted['message']; ?></textarea>
+            </div>
+    
+            <div class="row">
+            
+                <div class="mb-3 col-12 order-3">
+                    <input type="submit" name="submit" value="Send Message" class="form-control btn btn-custom-primary" />
+                </div>
+                
+                <div class="mb-3 col-lg-8 order-1">
+                    <label for="captcha">Captcha</label> 
+                    <span id="captcha-info" class="info"></span>
+                    <input type="text" name="captcha" id="captcha" class="form-control captchaInputBox" placeholder="copy the captcha code">
+                </div>
+    
+                <div class="mb-3 col-lg-4 order-2 d-md-flex justify-content-between pt-4 pl-md-0">
+                    <img id="captcha_code" src="web/captcha-code.php" class="" />
+                    <button name="refresh" class="cursor" onClick="refreshCaptcha();" id="refresh"><strong>&orarr;</strong></button>
+                </div>
+    
+            </div>
+            
+        </form>
+    
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<div class="col-4 col-lg-2 p-3 px-lg-5 align-self-center my-3 my-lg-5">
+    <div class="program text-center">
+    
+        <?=isset($feature_data['link']) 
+            ? '<a href="' . BASE_URL . '/' . CURRENT_PAGE 
+                . (
+                    isset($page_data['link']) 
+                        ? $page_data['link'] 
+                        : (
+                            isset($feature_page)
+                                ? $feature_page
+                                : ''
+                        )
+                )
+                . '/' . $feature_data['link']
+                . '" class="">' 
+            : '' 
+        ?>
+    
+        <div class="">
+            <?=isset($feature_data['image']) 
+                ? Run::post_image(
+                    $feature_data['image'], 
+                    [
+                        'alt' => (isset($feature_data['image_caption']) ? strip_tags($feature_data['image_caption']) : null),
+                        'width' => '100%'
+                    ]
+                )
+                : ''; 
+            ?>
+        </div>
+        
+        <div class="d-none text card-body p-lg-5">
+            <?=isset($feature_data['title']) 
+                ? '<h5 class="h6 fw-bold">' . $feature_data['title'] . '</h5>' 
+                : '' 
+            ?>
+    
+            <?=isset($feature_data['description'])
+                ? '<p>' . strip_tags($feature_data['description']) . '</p>'
+                : (
+                    isset($feature_data['content']) 
+                        ? '<p>' . substr(strip_tags($feature_data['content']), 0, 100) . '...</p>' 
+                        : ''
+                )
+            ?>
+        </div>
+    
+        <?=isset($feature_data['link']) 
+            ? '</a>' 
+            : '' 
+        ?>
+        
+    </div>
+</div>

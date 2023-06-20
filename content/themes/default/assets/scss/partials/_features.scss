@@ -1,0 +1,35 @@
+.feature {
+    margin-bottom: 15px;
+
+    .image {
+        height: 200px;
+        background: #EEE;
+    }
+    
+    .text {
+        padding: 15px;
+        box-shadow: 0px 0px 10px #EEE;
+    }
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+
+    .feature {
+        float: left;
+        width: 47%;
+        margin: 1.5%;
+    }
+
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+
+    .feature {
+        width: 30%;
+    }
+
+}

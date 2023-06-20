@@ -1,0 +1,59 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php //var_dump($feature_data); ?> to see all what content is being returned. 
+-->
+
+<?php if (isset($feature_data['image']) && $feature_data['image']!=''): ?>
+    <div class="col-12 px-0 page-image">
+        <div class="image" style="">
+            <?=Run::post_image(
+                $feature_data['image'], 
+                ['alt' => (isset($feature_data['image_caption']) ? strip_tags($feature_data['image_caption']) : null)]
+            ); ?>
+        </div>
+    
+        <?php if (isset($feature_data['image_caption']) && $feature_data['image_caption']!=''): ?>
+            <?php if ($feature_data['image_caption'] != null): ?>
+                <p class="image-caption"><?=$feature_data['image_caption'] ?></p>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+<div class="col-10 mt-4">
+    <div class="page-content">
+    
+        <section class="content-header mb-4">
+            <?=isset($feature_data['title']) ? '<h1 class="h2 text-uppercase">' . $feature_data['title'] . '</h1>' : '' ?>
+            <?=!empty($feature_data['date'])
+                ? '<section class="small"><i class="fas fa-fw fa-calendar"></i> ' . date('dS M Y', strtotime($feature_data['date'])) . '</section>'
+                : ''
+            ?>
+            <?=!empty($feature_data['from_date'])
+                ? '<section><i class="fas fa-fw fa-calendar"></i> <strong>' . date('D dS M Y', strtotime($feature_data['from_date'])) . '</strong>'
+                    . (!empty($feature_data['to_date'])
+                        ? ' to <strong>' . date('D dS M Y', strtotime($feature_data['to_date'])) . '</strong>'
+                        : '')
+                    . '</section>'
+                : ''
+            ?>
+            <?=isset($feature_data['venue']) 
+                ? '<section class="fw-bold"><i class="fas fa-fw fa-map-pin"></i> ' . $feature_data['venue'] . '</section>' 
+                : '' 
+            ?>
+        </section>
+
+        <?=isset($feature_data['content']) ? $feature_data['content'] : '' ?>
+    
+        <div class="mt-5"></div>
+
+        <div class="row justify-content-center">
+            <?php if (isset($feature_data['event_id'])) Feature::list_features('Team', ['order' => 'id DESC', 'condition' => 'team.category_id='. $feature_data['event_id']], 'team-preview.html'); ?>
+        </div>
+    
+        <?php if (isset($back)): ?>
+            <div class="mb-5 text-center"><a href="<?= BASE_URL . '/' . $back ?>">&larr; back</a></div>
+        <?php endif; ?>
+    
+    </div>
+</div>

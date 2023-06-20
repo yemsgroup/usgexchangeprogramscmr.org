@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Page Title and Meta Information -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title><?= $title ?></title>
+	<meta name="description" content="<?= $description ?>" />
+
+	<!-- Base URL -->
+	<?=defined('BASE_URL') ? '<base href="' . BASE_URL . '/syteman/" target="" />' : ''; ?>
+	
+	<!-- Browser Icon -->
+	<link rel="shortcut icon" href="<?=defined('BASE_URL') ? BASE_URL : $_SERVER['SERVER_NAME']; ?>/favicon.svg">
+
+	<!-- Include CSS Styles if any -->
+	<?php
+		if (file_exists(PATH_TO_SYM_THEME . '/includes/dependencies-css.php')) 
+            include_once PATH_TO_SYM_THEME . '/includes/dependencies-css.php';
+	?>
+
+	<!-- 
+		Get from and ADD Google Analytics JS Tracking Tag
+		Only active when in PRODUCTION to eliminate fetch time during DEVELOPMENT 
+	-->
+	<?php if (!defined('DEVELOPMENT')): ?>
+	<?php endif; ?>
+
+	<!--[if lt IE 9]>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+<!-- 
+	Get and add Facebook Required Code for FB Plugins to work 
+	Only active when in PRODUCTION to eliminate fetch time during DEVELOPMENT 
+-->

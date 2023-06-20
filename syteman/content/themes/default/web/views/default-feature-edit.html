@@ -1,0 +1,303 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<div class="col-11 col-lg-7 mb-3">
+    <form class="form w-100" method="post" action="">
+        
+        <input type="hidden" name="control" value="<?=$feature_data['id']; ?>">
+        <input type="hidden" name="last_update" value="<?=date('Y-m-d') ?>">
+
+        <div class="row">
+
+            <?=isset($feature_data['lang_id']) 
+                ? '<div class="col-6 mb-3">
+                    <select name="lang_id" id="" class="form-select">
+                        <option value="" ' . ($feature_data['lang_id'] == '' ? 'selected="selected"' : '') . '>Language</option>
+                        <option value="1" ' . ($feature_data['lang_id'] == 1 ? 'selected="selected"' : '') . '>English</option>
+                        <option value="2" ' . ($feature_data['lang_id'] == 2 ? 'selected="selected"' : '') . '>French</option>
+                    </select>
+                </div>' 
+                : '' 
+            ?>
+                
+            <?=isset($feature_data['role']) 
+                ? '<div class="col-6 mb-3">
+                    <select name="role" id="" class="form-select">
+                        <option value="2" ' . ($feature_data['role'] == 2 ? 'selected="selected"' : '') . '>User</option>
+                        <option value="1" ' . ($feature_data['role'] == 1 ? 'selected="selected"' : '') . '>Admin</option>
+                    </select>
+                </div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['is_active']) 
+                ? '<div class="col-6 mb-3">
+                    <select name="is_active" id="" class="form-select">
+                        <option value="1" ' . ($feature_data['is_active'] == 1 ? 'selected="selected"' : '') . '>Active</option>
+                        <option value="0" ' . ($feature_data['is_active'] == 0 ? 'selected="selected"' : '') . '>Inactive</option>
+                    </select>
+                </div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['priority']) 
+                ? '<div class="col-6 mb-3"><input class="form-control" name="priority" placeholder="priority" value="' . $feature_data['priority'] . '" /></div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['username']) 
+                ? '<div class="col-6 mb-3"><input class="form-control" name="username" placeholder="username" value="' . $feature_data['username'] . '" /></div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['email']) 
+                ? '<div class="col-6 mb-3"><input class="form-control" name="email" placeholder="Email" value="' . $feature_data['email'] . '" /></div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['first_name']) 
+                ? '<div class="col-6 mb-3"><input class="form-control" name="first_name" placeholder="First Name" value="' . $feature_data['first_name'] . '" /></div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['last_name']) 
+                ? '<div class="col-6 mb-3"><input class="form-control" name="last_name" placeholder="Last Name" value="' . $feature_data['last_name'] . '" /></div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['name']) 
+                ? '<div class="col mb-3"><input class="form-control" name="name" placeholder="Name" value="' . $feature_data['name'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['link']) 
+                ? '<div class="col-12 mb-3"><input class="form-control" name="link" placeholder="Link" value="' . $feature_data['link'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['icon']) 
+                ? '<div class="col-12 mb-3"><input class="form-control" name="icon" placeholder="Icon" value="' . $feature_data['icon'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['url']) 
+                ? '<div class="col-12 mb-3"><input class="form-control" name="url" placeholder="URL" value="' . $feature_data['url'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <!-- <?=isset($feature_data['date']) 
+                ? '<div class="col-12 mb-3"><input type="date" class="form-control" name="date" placeholder="date" value="" /></div>' 
+                : '' 
+            ?> -->
+                    
+            <?=isset($feature_data['filename'])
+                ? '<div class="mb-3"><input class="form-control" placeholder="Filename" name="filename" value="' . $feature_data['filename'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['title'])
+                ? '<div class="col mb-3"><input class="form-control" placeholder="Title" name="title" value="' . $feature_data['title'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['nav_title'])
+                ? '<div class="col mb-3"><input class="form-control" placeholder="Nav Title" name="nav_title" value="' . $feature_data['nav_title'] . '" /></div>' 
+                : '' 
+            ?>
+                    
+            <?=isset($feature_data['position'])
+                ? '<div class="col mb-3"><input class="form-control" placeholder="Position" name="position" value="' . $feature_data['position'] . '" /></div>' 
+                : '' 
+            ?>
+
+            <?=isset($feature_data['description'])
+                ? '<div class="col-12 mb-3"><textarea class="form-control" placeholder="Description" name="description" rows="3">' . $feature_data['description'] . '</textarea></div>'
+                : ''
+            ?>
+
+            <?=isset($feature_data['profile'])
+                ? '<div class="col-12 mb-3"><textarea class="form-control" placeholder="Profile" name="profile" rows="3">' . $feature_data['profile'] . '</textarea></div>'
+                : ''
+            ?>
+
+            <?=isset($feature_data['content']) 
+                ? '<div class="col-12 mb-3"><textarea class="form-control" placeholder="Content" name="content" rows="5">' . $feature_data['content'] . '</textarea></div>' 
+                : ''
+            ?>
+
+            <?=isset($feature_data['layout_id']) 
+                ? '<div class="col-4 mb-3">
+                    <input type="number" class="form-control" name="layout_id" value="' . $feature_data['layout_id'] . '" placeholder="Page Layout" />
+                </div>'
+                : ''
+            ?>
+                        
+            <?=isset($feature_data['template_id']) 
+                ? '<div class="col-4 mb-3">
+                    <input type="number" class="form-control" name="template_id" value="' . $feature_data['template_id'] . '" placeholder="Page Template" />
+                </div>'
+                    : ''
+            ?>
+                
+            <?=isset($feature_data['controller']) 
+                ? '<div class="col-4 mb-3">
+                    <input type="text" class="form-control" name="controller" value="' . $feature_data['controller'] . '" placeholder="Page Controller" />
+                </div>'
+                    : ''
+            ?>
+
+            <?=isset($feature_data['image_caption']) 
+                ? '<div class="col mb-3"><textarea class="form-control" placeholder="Image Caption" name="image_caption" rows="5">' . $feature_data['image_caption'] . '</textarea></div>' 
+                : ''
+            ?>
+                    
+            <?php 
+            
+                if (isset($feature_data['category_id'])) {
+
+                    if (FEATURE_CATEGORIES != null) {
+
+                        echo '<div class="col mb-3">
+                            <select name="category_id" id="" class="form-select">
+                        ';
+
+                                foreach (FEATURE_CATEGORIES as $category) {
+
+                                    echo '<option value="' . $category['id'] . '"';
+                                        if ($feature_data['category_id'] == $category['id']) echo ' selected';
+                                    echo '>' . $category['title'] . '</option>';
+
+                                }
+
+                        echo '
+                                <option value=""';
+                                if ($feature_data['category_id'] == 0 || $feature_data['category_id'] == null) echo ' selected';
+                        echo '>Uncategorized</option>
+                            </select>
+                        </div>';
+                        
+                    }
+
+                } elseif (isset($feature_data['album_id'])) {
+
+                    if (FEATURE_CATEGORIES != null) {
+
+                        echo '<div class="col mb-3">
+                            <select name="album_id" id="" class="form-control">
+                        ';
+
+                                foreach (FEATURE_CATEGORIES as $category) {
+
+                                    echo '<option value="' . $category['id'] . '"';
+                                        if ($feature_data['album_id'] == $category['id']) echo ' selected';
+                                    echo '>' . $category['title'] . '</option>';
+
+                                }
+
+                        echo '
+                                <option value=""';
+                                if ($feature_data['album_id'] == 0 || $feature_data['album_id'] == null) echo ' selected';
+                        echo '>Uncategorized</option>
+                            </select>
+                        </div>';
+                        
+                    }
+
+                }
+                
+            ?>
+
+        </div>
+        
+        <div class="row g-0">
+
+            <div class="mb-3 col-6">
+                <input type="submit" value="Update <?=Route::is_category_page() ? 'Category' : 'Feature' ?>" name="update-feature<?=Route::is_category_page() ? '-category' : '' ?>" class="form-control px-3">
+            </div>
+
+            <div class="mb-3 col-6">
+                <a href="<?=$page ?>" class="form-control px-3 rounded-0">Cancel</a>
+            </div>
+                
+        </div>
+    </form>
+</div>
+
+
+<?php if(isset($feature_data['image'])): ?>
+    <div class="col-11 col-lg-5 feature">
+
+        <div class="image position-relative shadow-custom-secondary-sm">
+            <?php
+                echo Run::post_image(
+                    $feature_data['image'], 
+                    $alt = isset($feature_data['image_caption']) 
+                        ? $feature_data['image_caption'] 
+                        : ''
+                );
+            ?>
+
+            <section class="controls position-absolute w-100 p-1">
+                <span class="d-inline-block p-1 px-2 m-2 rounded-circle bg-custom-primary text-white" data-bs-toggle="tooltip" title="Update Image">
+                    <i class="fas fa-camera-retro cursor" data-bs-toggle="modal" data-bs-target="#image-form"></i>
+                </span>
+            </section>
+
+            <div class="modal" id="image-form" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                        <form action="" method="post" enctype="multipart/form-data" class="form d-flex w-100 p-3 bg-light shadow-sm rounded text-center">
+                            <input type="hidden" name="control" value="<?=$feature_data['id']; ?>">
+                            <input type="hidden" name="link" value="<?=isset($feature_data['link']) ? $feature_data['link'] : '' ?>">
+                            <?=(isset($feature_data['image']) && ($feature_data['image'] != '')) ? '<input type="hidden" name="image" value="' . $feature_data['image'] . '">' : '' ?>
+                            <input type="file" name="image" value="" class="">
+                            <input type="submit" name="update-<?=Route::is_category_page() ? 'feature-category' : 'feature' ?>" class="w-50" value="Update <?=Route::is_category_page() ? 'Category' : 'Feature' ?> Image" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <?php if(isset($feature_data['image_share'])): ?>
+            <div class="image position-relative mt-5 shadow-custom-secondary-sm">
+                <?php
+                    echo Run::post_image(
+                        $feature_data['image_share'], 
+                        $alt = isset($feature_data['image_caption']) 
+                            ? $feature_data['image_caption'] 
+                            : ''
+                    );
+                ?>
+
+                <section class="controls position-absolute w-100 p-1">
+                    <span class="d-inline-block p-1 px-2 m-2 rounded-circle bg-custom-primary text-white" data-bs-toggle="tooltip" title="Update Image">
+                        <i class="fas fa-camera-retro cursor" data-bs-toggle="modal" data-bs-target="#image-share-form"></i>
+                    </span>
+                </section>
+
+                <div class="modal" id="image-share-form" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+
+                            <form action="" method="post" enctype="multipart/form-data" class="form d-flex w-100 p-3 bg-light shadow-sm rounded text-center">
+                                <input type="hidden" name="control" value="<?=$feature_data['id']; ?>">
+                                <input type="hidden" name="link" value="<?=isset($feature_data['link']) ? $feature_data['link'] : '' ?>">
+                                <?=(isset($feature_data['image_share']) && ($feature_data['image_share'] != '')) ? '<input type="hidden" name="image_share" value="' . $feature_data['image_share'] . '">' : '' ?>
+                                <input type="file" name="image_share" value="" class="">
+                                <input type="submit" name="update-<?=Route::is_category_page() ? 'feature-category' : 'feature' ?>" class="w-50" value="Update <?=Route::is_category_page() ? 'Category' : 'Feature' ?> Image" />
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <?php endif; ?>
+
+    </div>
+<?php endif; ?>

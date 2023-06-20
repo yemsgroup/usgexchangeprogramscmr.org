@@ -1,0 +1,164 @@
+
+<div class="col-11 col-lg-7">
+    <form class="form w-100" method="post" action="" enctype="multipart/form-data">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <select name="role" id="" class="form-select">
+                    <option value="2">User</option>
+                    <option value="1">Admin</option>
+                </select>
+                <!-- <div id="" class="form-text">Select User Type</div> -->
+            </div>
+    
+            <div class="col-6 mb-3">
+                <select name="is_active" id="" class="form-select">
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+        </div>
+                
+        <div class="row">
+            <div class="col-6 col-lg-4 mb-3">
+                <input type="email" class="form-control" name="email" value="" placeholder="email" />
+            </div>
+                
+            <div class="col-lg-4 mb-3">
+                <input type="text" class="form-control" name="username" value="" placeholder="username" />
+            </div>
+                    
+            <div class="col-6 col-lg-4 mb-3">
+                <input type="password" class="form-control" name="password" value="" placeholder="password" />
+            </div>
+        </div>
+                
+        <div class="row">
+            <div class="col-6 mb-3">
+                <input type="text" class="form-control" name="first_name" value="" placeholder="First Name" />
+            </div>
+                    
+            <div class="col-6 mb-3">
+                <input type="text" class="form-control" name="last_name" value="" placeholder="Last Name" />
+            </div>
+        </div>
+
+        <?php if (FEATURE_CATEGORIES != null) : ?>
+
+            <div class="mb-3">
+                <select name="category_id" id="" class="form-select">
+                    <?php 
+                        foreach (FEATURE_CATEGORIES as $category) 
+                            echo '<option value="' . $category['id'] . '">' . $category['title'] . '</option>'; 
+                    ?>
+                    <option value="">Uncategorized</option>
+                </select>
+            </div>
+                
+        <?php endif; ?>
+
+        <div class="mb-3">
+            <select name="author" id="" class="form-select">                
+                <option value="<?=$_SESSION['adminid'] ?>">Author (Current User)</option>
+            </select>
+        </div>
+                
+        <div class="mb-3">
+            <input type="number" class="form-control" name="parent" value="" placeholder="Parent" />
+        </div>
+                
+        <div class="mb-3">
+            <input type="text" class="form-control" name="name" value="" placeholder="Name Constant" />
+        </div>
+
+        <div class="mb-3">
+            <input type="date" class="form-control" name="date" value="" placeholder="Date" />
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="filename" value="" placeholder="filename" />
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="title" value="" placeholder="Title" />
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="nav_title" value="" placeholder="Nav Title" />
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="url" value="" placeholder="URL" />
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="priority" value="" placeholder="Priority" />
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="position" value="" placeholder="Position" />
+        </div>
+
+        <div class="mb-3">
+            <textarea class="form-control" name="description" rows="3" placeholder="Description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <textarea class="form-control" name="profile" rows="3" placeholder="Profile"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <textarea class="form-control" name="content" rows="5" placeholder="Content"></textarea>
+        </div>
+                
+        <div class="row">
+            <div class="col-4 mb-3">
+                <input type="number" class="form-control" name="layout_id" value="" placeholder="layout" />
+            </div>
+                    
+            <div class="col-4 mb-3">
+                <input type="number" class="form-control" name="template_id" value="" placeholder="template" />
+            </div>
+                    
+            <div class="col-4 mb-3">
+                <input type="text" class="form-control" name="controller" value="" placeholder="controller" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" name="icon" value="" placeholder="Icon" />
+        </div>
+
+        <div class="row align-items-stretch g-0">
+            <div class="mb-3 col-lg-6">
+                <input type="file" name="image" value="" class=" p-2">
+            </div>
+    
+            <div class="mb-3 col-lg-6">
+                <input type="text" class="form-control h-100 py-2" name="image_caption" value="" placeholder="Image Caption" />
+            </div>
+        </div>
+
+        <div class="row align-items-stretch g-0">
+            <div class="mb-3 col-lg-6">
+                <input type="file" name="image_share" value="" class=" p-2">
+            </div>
+    
+            <div class="mb-3 col-lg-6">
+                <input type="text" class="form-control h-100 py-2" name="image_share_caption" value="" placeholder="Shareable Image Caption" />
+            </div>
+        </div>
+        
+        <div class="row g-0">
+
+            <div class="mb-3 col-6">
+                <input type="submit" value="Add" name="add-feature" class="form-control px-3">
+            </div>
+
+            <div class="mb-3 col-6">
+                <a href="<?=$page ?>" class="form-control px-3 rounded-0">Cancel</a>
+            </div>
+                
+        </div>
+    </form>
+</div>

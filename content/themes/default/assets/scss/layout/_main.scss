@@ -1,0 +1,39 @@
+// Every thing about header styles
+/* Website Header */
+main {	
+	padding: 15px 5%;
+	overflow: auto;
+	
+	.page-image {
+		margin-bottom: 25px;
+	}
+
+	.image-caption {
+		font-size: small;
+		text-align: right;
+	}
+	
+	.page-content {
+		padding: 0 25px; 
+		
+		img {
+			max-width: 100%;
+		}
+	}
+	
+}
+
+
+/* Tablet Breakpoint */
+@media screen and (min-width: 768px) {
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+
+	main {
+		padding: 3% 12.5%;
+	}
+
+}

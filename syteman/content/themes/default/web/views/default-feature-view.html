@@ -1,0 +1,147 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can 
+    <?php var_dump($feature_data) ?> 
+    to see all what content is being returned. 
+-->
+
+<div class="col-11 col-lg-5 order-lg-2 feature">
+
+    <div class="image position-relative shadow-custom-secondary-sm" style="height:auto">
+        <?php if (isset($feature_data['image'])):
+            echo Run::post_image(
+                $feature_data['image'], 
+                ['alt' => (isset($feature_data['image_caption']) ? $feature_data['image_caption'] : '')]
+            );
+        endif; ?>
+
+        <section class="controls position-absolute w-100 p-1">
+            <span class="d-inline-block p-1 px-2 m-2 rounded-circle bg-custom-primary text-white" data-toggle="tooltip" title="Update Image">
+                <i class="fas fa-camera-retro cursor" data-bs-toggle="modal" data-bs-target="#image-form"></i>
+            </span>
+        </section>
+        
+        <div class="modal" id="image-form" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <form action="" method="post" enctype="multipart/form-data" class="form d-flex w-100 p-3 bg-light shadow-sm rounded text-center">
+                        <input type="hidden" name="control" value="<?=$feature_data['id']; ?>">
+                        <?=(isset($feature_data['image']) && ($feature_data['image'] != '')) ? '<input type="hidden" name="image" value="' . $feature_data['image'] . '">' : '' ?>
+                        <input type="file" name="image" value="" class="">
+                        <input type="submit" name="update-feature" class="w-50" value="Update" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?=!empty($feature_data['image_caption']) 
+        ? '<div class="w-100 p-2 mb-2 border-bottom text-end small">' . $feature_data['image_caption'] . '</div>' 
+        : ''
+    ?>
+</div>
+
+<div class="col-11 col-lg-7 order-lg-1 page-content mb-3">
+
+    <?=!empty($feature_data['is_active'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Status</span><br>' . ($feature_data['is_active'] == 0 ? 'Inactive' : 'Active') . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['status'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Status</span><br>' . ($feature_data['status'] == 0 ? 'Inactive' : 'Active') . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['priority'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Priority</span><br>' . $feature_data['priority'] . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['role'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Role</span><br>' . ($feature_data['role'] == 0 ? 'Admin' : 'User') . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['first_name']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Names</span><br>' 
+            . $feature_data['first_name'] 
+            . (!empty($feature_data['last_name']) ? ' ' . $feature_data['last_name'] : '')
+            . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['position']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Position</span><br>' . $feature_data['position'] . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['icon']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Icon</span><br><i class="' . $feature_data['icon'] . '"></i></div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['username']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Username</span><br>' . $feature_data['username'] . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['email']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Email</span><br>' . $feature_data['email'] . '</div>' 
+        : '' 
+    ?>
+                
+    <?=!empty($feature_data['name']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Name</span><br>' . $feature_data['name'] . '</div>' 
+        : '' 
+    ?>
+                
+    <?=!empty($feature_data['lang_id']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Language</span><br>' . $feature_data['lang_id'] . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['category_title']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Category</span><br>' . (!empty($feature_data['category_title']) ? $feature_data['category_title'] : '<span class="small">Uncategorized</span>') . '</div>' 
+        : '' 
+    ?>
+                
+    <?=!empty($feature_data['title'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Title</span><br>' . $feature_data['title'] . '</div>' 
+        : '' 
+    ?>
+                
+    <?=!empty($feature_data['url'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">url</span><br>' . $feature_data['url'] . '</div>' 
+        : '' 
+    ?>
+
+    <?=!empty($feature_data['description'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Description</span><br>' . $feature_data['description'] . '</div>'
+        : ''
+    ?>
+
+    <?=!empty($feature_data['profile'])
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">P  rofile</span><br>' . $feature_data['profile'] . '</div>'
+        : ''
+    ?>
+
+    <?=!empty($feature_data['content']) 
+        ? '<div class="w-100 p-2 my-2 border-bottom"><span class="badge bg-secondary text-white">Content</span><br>' . $feature_data['content'] . '</div>' 
+        : ''
+    ?>
+
+</div>
+        
+<div class="col-11 col-lg-5 offset-lg-7 order-lg-3 d-flex py-3 justify-content-between">
+    <span>
+        <a href="<?=$page . '/' . $feature_data['id']; ?>/edit" data-toggle="tooltip" title="Edit" class="py-2 px-2 rounded-0 bg-custom-secondary text-white"><i class="fas fa-pen-square"></i> edit</a>
+        <a href="<?=$page . '/' . $feature_data['id']; ?>/delete" data-toggle="tooltip" title="Delete" class="py-2 px-2 rounded-0 bg-danger text-white"><i class="fas fa-times-circle"></i> delete</a>
+    </span>
+
+    <span>
+        <a href="<?=$page; ?>" data-toggle="tooltip" title="back" class="py-2 px-2 rounded-0 bg-custom-primary text-white"><i class="fas fa-hand-point-left"></i> back</a>
+    </span>
+</div>

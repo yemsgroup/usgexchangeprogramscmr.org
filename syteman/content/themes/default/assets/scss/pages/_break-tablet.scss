@@ -1,0 +1,11 @@
+/*smaller mobile devices*/
+@media screen and (max-width: 530px) {
+    .programs {
+        .box {
+            width: 270px;
+        }
+    }
+}
+
+/*quite larger devices*/
+@media screen and (max-width: 768px) {}

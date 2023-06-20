@@ -1,0 +1,37 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data); ?> to see all what content is being returned. 
+-->
+
+<?php if (isset($feature_data['image']) && $feature_data['image']!=''): ?>
+    <div class="page-image">
+
+        <div class="image">
+            <?=Run::post_image(
+                $feature_data['image'], 
+                ['alt' => (isset($feature_data['image_caption']) ? strip_tags($feature_data['image_caption']) : null)]
+            ); ?>
+        </div>
+
+        <?php if (isset($feature_data['image_caption']) && $feature_data['image_caption']!=''): ?>
+            <?php if ($feature_data['image_caption'] != null): ?>
+                <p class="image-caption"><?=$feature_data['image_caption'] ?></p>
+            <?php endif; ?>
+        <?php endif; ?>
+    
+    </div>
+<?php endif; ?>
+
+
+<div class="page-content">
+
+    <?=isset($feature_data['title']) ? '<h1>' . $feature_data['title'] . '</h1>' : '' ?>
+    <?=isset($feature_data['content']) ? $feature_data['content'] : '' ?>
+
+    <div class="spacer"></div>
+
+    <?php if (isset($back)): ?>
+        <div class="text-center"><a href="<?= BASE_URL . '/' . $back ?>">&larr; back</a></div>
+    <?php endif; ?>
+
+</div>

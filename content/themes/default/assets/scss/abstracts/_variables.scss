@@ -1,0 +1,36 @@
+$custom-colors: (
+	"base": #333333, 
+	"primary": #2581c4, 
+	"secondary": #f6a317, 
+	"accent-red": #FF0000, 
+	"accent-green": #00FF00,
+	"black": #000000,
+	"light": #EEEEEE,
+);
+
+$social-colors: (
+	"facebook": #0000ff,
+	"twitter": #0099ff,
+	"youtube": #ff0000,
+	"linkedin": #0e76a8
+);
+
+$custom-fonts: (
+	"primary": unquote("'Almarai', Arial, sans-serif"),
+	"title": unquote("'Lato', 'Almarai', Arial"),
+	"accent": unquote("'Times New Roman', Times")
+);
+
+$directions: ("top", "bottom", "left", "right", "top-left", "top-right", "bottom-left", "bottom-right");
+
+$custom-base-color: map.get($custom-colors, "base");
+$custom-primary-color: map.get($custom-colors, "primary");
+$custom-secondary-color: map.get($custom-colors, "secondary");
+$custom-accent-red: map.get($custom-colors, "accent-red");
+$custom-accent-green: map.get($custom-colors, "accent-green");
+$custom-accent-dark: map.get($custom-colors, "black");
+$custom-accent-light: map.get($custom-colors, "light");
+
+$custom-primary-font: map.get($custom-fonts, "primary");
+$custom-title-font: map.get($custom-fonts, "title");
+$custom-accent-font: map.get($custom-fonts, "accent");

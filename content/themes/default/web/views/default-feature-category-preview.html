@@ -1,0 +1,44 @@
+<!-- 
+    All of the Content from the DB that can be used on this file have been passed as a $feature_data associative array.
+    You can <?php // var_dump($feature_data) ?> to see all what content is being returned. 
+-->
+<div class="feature">
+
+    <div class="image">
+        <?=isset($feature_data['image']) 
+            ? Run::post_image(
+                $feature_data['image'], 
+                ['alt' => strip_tags(isset($feature_data['image_caption']) ? $feature_data['image_caption'] : '')]
+            )
+            : ''; 
+        ?>
+    </div>
+    
+    <div class="text">
+        <?=isset($feature_data['title']) 
+            ? '<h5>' . $feature_data['title'] . '</h5>' 
+            : '' 
+        ?>
+
+        <?=isset($feature_data['description'])
+            ? '<p><small>' . strip_tags($feature_data['description']) . '</small></p>'
+            : (
+                isset($feature_data['content']) 
+                    ? '<p><small>' . substr(strip_tags($feature_data['content']), 0, 100) . '...</small></p>' 
+                    : ''
+            )
+        ?>
+
+        <?=isset($feature_data['link']) 
+            ? '<small><a href="' . BASE_URL . '/' . CURRENT_PAGE 
+                . (
+                    isset($page_data['link']) ? $page_data['link'] : ''
+                ) 
+                . '/c/' 
+                . $feature_data['id']
+                . '" class="text-white">learn more</a></small>' 
+            : '' 
+        ?>        
+    </div>
+    
+</div>

@@ -1,0 +1,22 @@
+/* Partner logos */
+.partner-img {
+    max-width: 20%;
+    height: auto;
+    margin: 10px;
+}
+
+/* Tablet and Above */
+@media screen and (min-width: 768px) {
+
+    .partner-img {
+        height: 50px;
+        width: auto;
+        max-width: none;
+    }
+
+}
+
+
+/* Desktop Breakpoint */
+@media screen and (min-width: 992px) {
+}
